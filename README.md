@@ -1,6 +1,6 @@
 # leisuredeals
 
-This Project is a [Xapix.io](http://www.xapix.io) demo Project. Watch it live at [leisuredeals.net](http://www.leisuredeals.net).
+This Project is a [Xapix.io](http://www.xapix.io) demo Project. Watch it live at [www.leisuredeals.net](http://www.leisuredeals.net).
 
 It's Rails 4.2 and uses [xapix_client](https://github.com/pickledolives/xapix_client) as the only backend connetion (no DB). If you wonder why there is a DB config still, it's because Heroku requires a database, so we had to setup a FREE one.
 
@@ -20,7 +20,8 @@ end
 ```ruby
 # app/models/local_deal.rb
 
-# On XapiX.io we created on project 'leisuredeals' an Output Endpoint 'local_deals'. It is backed by stale Groupon data of an affiliate network
+# On XapiX.io we created on project 'leisuredeals' an Output Endpoint 'local_deals'.
+# It is backed by meanwhile stale Groupon data of an affiliate network
 
 class LocalDeal < XapixClient::Resource
 end
