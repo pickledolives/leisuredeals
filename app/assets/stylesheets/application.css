@@ -1,0 +1,31 @@
+/*
+ *= require font-awesome
+ *= require twitter-bootstrap-static/bootstrap
+ *= require twitter-bootstrap-static/fontawesome
+ *= require folio/owl.theme
+ *= require folio/owl.carousel
+ *= require folio/supersized
+ *= require folio/nivo-theme
+ *= require folio/nivo-lightbox
+ *= require folio/style
+ *= require folio/responsive
+ *= require folio/theme_color
+ */
+
+.calltoaction .cta-field {
+  display: inline-block;
+  font-size: 24px;
+  padding: 15px 30px;
+}
+
+.calltoaction select {
+  background-color: white;
+}
+
+.calltoaction .cta-email-field {
+  top: -5px;
+}
+
+.pagination-links .btn { top: 0; }
+
+.footer .footeritem form input { padding: 10px 12px; }

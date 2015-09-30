@@ -1,0 +1,39 @@
+%section.portfolio
+  .container
+    .row
+      .col-md-12
+        %article.block-thumbnail
+          %a.block-thumb{:href => root_path}
+            .block-image
+              .overlay
+                .icon
+                  = fa_icon 'backward'
+              = image_tag "#{@parameters[:id]}_wide.jpg"
+          .block-data
+            %h3= link_to t('deal_categories.show.deals_best_savings', category: t("layouts.application.#{@parameters[:id]}")), '#'
+
+%section
+  .container
+    - if @deals.errors.any?
+      = render partial: '/shared/no_deals_error'
+    - else
+      .row.calltoaction
+        .pagination-links.col-sm-6{style: 'text-align: left'}
+          %p
+            = link_to '<<', @parameters.merge(page: @deals.meta['pagination']['first']), class: 'btn btn-border'
+            - if @deals.meta['pagination']['prev'].present?
+              = link_to '<', @parameters.merge(page: @deals.meta['pagination']['prev']), class: 'btn btn-border'
+            %a.btn.btn-border{href: '#'}== #{@deals.meta['pagination']['current'] } / #{@deals.meta['pagination']['last']}
+            - if @deals.meta['pagination']['next'].present?
+              = link_to '>', @parameters.merge(page: @deals.meta['pagination']['next']), class: 'btn btn-border'
+            = link_to '>>', @parameters.merge(page: @deals.meta['pagination']['last']), class: 'btn btn-border'
+        
+        = form_tag(deal_category_path(@parameters[:id]), :method => "get", class: 'col-sm-6') do
+          %fieldset.pull-right.form-group
+            = select :local_deals, :market, options_for_select([%w(Deutschland de), %w(Österreich at), %w(Schweiz ch)], @parameters[:market]), { prompt: 'Markt wählen...' }, { class: 'cta-field' }
+            = submit_tag "Go", class: 'btn btn-border cta-email-submit'
+
+      - @deals.in_groups_of(3).each do |deals|
+        .row
+          - deals.compact.each do |deal|
+            = render partial: '/shared/deal', locals: { deal: deal }

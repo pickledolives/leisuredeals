@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require twitter/bootstrap
+//= require folio/owl.carousel.min
+//= require folio/jquery.fitvids
+//= require folio/nivo-lightbox.min
+//= require folio/jquery.nav
+//= require folio/supersized.3.2.7.min
+//= require folio/jquery.jigowatt_newsletter
+//= require folio/main

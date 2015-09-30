@@ -1,0 +1,70 @@
+%section.portfolio
+  .container
+    .row
+      .col-xs-12.col-sm-6.col-md-4
+        %article.block-thumbnail
+          %a.block-thumb{:href => deal_category_path('travel')}
+            .block-image
+              .overlay
+                .icon
+                  = fa_icon 'bars'
+              = image_tag	'travel_square.jpg', alt: 'Travel. Artist: Nico Trinkhaus @ sumfinity.com'
+          .block-data
+            %h3= link_to t("deal_categories.index.travel_deals"), deal_category_path('travel')
+            %span.block-category= t("deal_categories.index.save_on_hotels_and_getaways")
+      .col-xs-12.col-sm-6.col-md-4
+        %article.block-thumbnail
+          %a.block-thumb{:href => deal_category_path('wellness')}
+            .block-image
+              .overlay
+                .icon
+                  = fa_icon 'bars'
+              = image_tag	'wellness_square.jpg', alt: 'Wellness. Artist: powerstock @ fotolia.com'
+          .block-data
+            %h3= link_to t("deal_categories.index.wellness_deals"), deal_category_path('wellness')
+            %span.block-category= t("deal_categories.index.save_on_spa_and_wellness")
+      .col-xs-12.col-sm-6.col-md-4
+        %article.block-thumbnail
+          %a.block-thumb{:href => deal_category_path('activities')}
+            .block-image
+              .overlay
+                .icon
+                  = fa_icon 'bars'
+              = image_tag	'activities_square.jpg', alt: 'Activities. Artist: Halfpoint @ fotolia.com'
+          .block-data
+            %h3= link_to t("deal_categories.index.activity_deals"), deal_category_path('activities')
+            %span.block-category= t("deal_categories.index.save_on_gastronomy_action_and_events")
+
+%section.calltoaction.intro
+  .container
+    .row
+      .col-md-12.text-center
+        .intro-content
+          %h1
+            = t("slogan.leisure_deals_most")
+            %strong= t("slogan.relaxed")
+            = t("slogan.deals")
+          %h2= t("slogan.we_have_the_best_savings_on_leisure_deals_out_there")
+    .row
+      = form_tag root_path, id: 'contactform' do
+        %fieldset
+          .col-md-2
+          %label{:accesskey => "E", :for => "email"}
+          = text_field_tag 'email', '', placeholder: t('deal_categories.index.email_placeholder'), class: 'email col-md-6 cta-field cta-email-field'
+          = submit_tag t("deal_categories.index.sign_up"), class: 'btn btn-border submit col-md-2'
+          .col-md-2
+            
+%section
+  .container
+    .row
+      .col-md-12.text-center
+        .intro-content
+          %h1= t("deal_categories.index.todays_top_deals")
+    
+    - if @deals.errors.any?
+      = render partial: '/shared/no_deals_error'
+    - else
+      - @deals.in_groups_of(3).each do |deals|
+        .row
+          - deals.compact.each do |deal|
+            = render partial: '/shared/deal', locals: { deal: deal }

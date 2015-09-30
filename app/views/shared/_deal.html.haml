@@ -1,0 +1,11 @@
+.col-xs-12.col-sm-6.col-md-4
+  %article.block-thumbnail
+    %a.block-thumb{:href => deal.link_url}
+      .block-image
+        .overlay
+          .icon= fa_icon 'cart-plus'
+        = image_tag deal.image_url
+    .block-data
+      %h3{style: 'font-size: 24px;'}
+        %a{:href => deal.link_url}= deal.title
+      %span.block-category= deal.description

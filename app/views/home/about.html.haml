@@ -1,0 +1,53 @@
+%a{name: 'who-we-are'}
+%section.intro
+  .container
+    .row
+      .col-md-12.text-center
+        %a.navbar-brand{href: root_path, style: 'float: none;'}
+          = fa_icon('ticket')
+          %span= t("leisure_deals")
+    .row
+      .col-md-12.text-center
+        .intro-content
+          %h1
+            = t("slogan.leisure_deals_most")
+            %strong= t("slogan.relaxed")
+            = t("slogan.deals")
+          %h2= t("slogan.we_have_the_best_savings_on_leisure_deals_out_there")
+
+%section.aboutme
+  .container
+    .row
+      .col-xs-6.col-sm-6.col-md-3.text-center
+        %h4= link_to image_tag('svenja_brau.jpg', alt: 'Svenja Brau', class: 'col-md-12'), 'https://de.linkedin.com/pub/svenja-brau/4a/a45/841/de'
+        %p
+          %strong= t("home.about.who_we_are_project_manager")
+        %p= t("home.about.who_we_are_svenja")
+      .col-xs-6.col-sm-6.col-md-3.text-center
+        %p= link_to image_tag('oliver_thamm.jpg', alt: 'Oliver Thamm', class: 'col-md-12'), 'https://de.linkedin.com/pub/oliver-thamm/72/74b/384'
+        %p
+          %strong= t("home.about.who_we_are_software_engineer")
+        %p= t("home.about.who_we_are_oliver")
+      .col-xs-12.col-sm-12.col-md-6
+        %h3= t("home.about.our_mission")
+        %p
+          %strong= t("home.about.our_mission_content")
+
+%a{name: 'impressum'}
+%section.content
+  .container
+    .row
+      .col-xs-12.col-sm-12.col-md-6
+        %h2= t("home.about.impressum")
+        %h3= t("home.about.our_office_in_berlin_germany")
+        %p
+          Pickled Olives Software
+          %br
+          Heinersdorfer Str. 39
+          %br
+          13086 Berlin, (GER)
+        %a.btn.btn-border{:href => 'mailto:office@pickled-olives.com'}
+          %i.fa.fa-envelope-o
+          Email
+      .col-xs-12.col-sm-12.col-md-6
+        = image_tag 'https://maps.googleapis.com/maps/api/staticmap?center=Berlin,Germany&zoom=11&size=600x300&maptype=roadmap&markers=52.55547,13.43169'

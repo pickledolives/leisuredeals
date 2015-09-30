@@ -1,0 +1,121 @@
+%section.blog
+  .container
+    .row
+
+      %a{name: 'how-it-works'}
+      .col-xs-12.col-sm-12.col-md-9
+        %article.blog-post
+          .blogtitle
+            %h1= t("home.how_to.how_leisure_deals_works")
+          .blogcontent
+
+            %a{name: 'what-we-do'}
+            %h3= t("home.how_to.what_we_do")
+            %p= t("home.how_to.what_we_do_content")
+            %ul
+              %li= t('home.how_to.what_we_do_1')
+              %li= t('home.how_to.what_we_do_2')
+              %li= t('home.how_to.what_we_do_3')
+
+            %a{name: 'how-we-do-it'}
+            %h3= t("home.how_to.how_we_do_it")
+            %p= t("home.how_to.how_we_do_it_content")
+
+      .col-xs-12.col-sm-12.col-md-3
+        .sidebar
+          .col-xs-12.col-sm-6.col-md-12.sidebar-item
+            %span.name= t("home.how_to.how_it_works")
+            %ul.links
+              %li
+                %a{:href => "#what-we-do"}= t("home.how_to.what_we_do")
+              %li
+                %a{:href => "#how-we-do-it"}= t("home.how_to.how_we_do_it")
+          .col-xs-12.col-sm-6.col-md-12.sidebar-item
+            %span.name= t("home.how_to.partners")
+            %ul.links
+              %li
+                %a{:href => "#groupon"}= t("home.how_to.groupon")
+          .col-xs-12.col-sm-6.col-md-12.sidebar-item
+            %span.name= t("home.how_to.our_values")
+            %ul.links
+              %li
+                %a{:href => "#security"}= t("home.how_to.security")
+              %li
+                %a{:href => "#privacy"}= t("home.how_to.privacy")
+              %li
+                %a{:href => "#transparency"}= t("home.how_to.transparency")
+          .col-xs-12.col-sm-6.col-md-12.sidebar-item
+            %span.name= t("home.how_to.tos_short")
+            %ul.links
+              %li
+                %a{:href => "#terms-of-service"}= t("home.how_to.tos")
+
+      %a{name: 'partners'}
+      .col-xs-12.col-sm-12.col-md-9
+        %article.blog-post
+          .blogtitle
+            %h1= t("home.how_to.partners")
+        .comments
+          %ul
+            %a{name: 'groupon'}
+            %li.single-comment
+              .author-image{style: 'width: 80px;'}
+                = image_tag 'groupon_400x400.png', size: '80x80'
+              .author-data
+                %strong= t("home.how_to.groupon")
+              .author-text
+                %p= t("home.how_to.groupon_content")
+              %ul.children
+                %li.single-comment
+                  .author-image
+                    %a{href: "http://ad.zanox.com/ppc/?27443407C1647186729T",  target: "_blank"}
+                      %img{src: "http://ad.zanox.com/ppv/?27443407C1647186729", align: "bottom", width: "120", height: "60", border: "0", hspace: "1", alt: "CityDeal - Deine Stadt zum halben Preis!"}
+                  .author-data
+                    = link_to t("home.how_to.groupon_de"), 'http://ad.zanox.com/ppc/?27443407C1647186729T', class: 'reply'
+                  .author-text
+                    %p= t("home.how_to.groupon_de_content")
+                %li.single-comment
+                  .author-image
+                    %a{href: "http://ad.zanox.com/ppc/?27989075C525867590T",  target: "_blank"}
+                      %img{src: "http://ad.zanox.com/ppv/?27989075C525867590", align: "bottom", width: "120", height: "60", border: "0", hspace: "1", alt: "CityDeal - Deine Stadt zum halben Preis!"}
+                  .author-data
+                    = link_to t("home.how_to.groupon_ch"), 'http://ad.zanox.com/ppc/?27989075C525867590T', class: 'reply'
+                  .author-text
+                    %p= t("home.how_to.groupon_ch_content")
+                %li.single-comment
+                  .author-image
+                    %a{href: "http://ad.zanox.com/ppc/?27989110C1770725866T",  target: "_blank"}
+                      %img{src: "http://ad.zanox.com/ppv/?27989110C1770725866", align: "bottom", width: "120", height: "60", border: "0", hspace: "1", alt: "CityDeal - Deine Stadt zum halben Preis!"}
+                  .author-data
+                    = link_to t("home.how_to.groupon_at"), 'http://ad.zanox.com/ppc/?27989110C1770725866T', class: 'reply'
+                  .author-text
+                    %p= t("home.how_to.groupon_at_content")
+      
+      %a{name: 'our-values'}
+      .col-xs-12.col-sm-12.col-md-9
+        %article.blog-post
+          .blogtitle
+            %h1= t("home.how_to.our_values")
+          .blogcontent
+
+            %a{name: 'security'}
+            %h3= t("home.how_to.security")
+            %p= t("home.how_to.security_content")
+
+            %a{name: 'privacy'}
+            %h3= t("home.how_to.privacy")
+            %p= t("home.how_to.privacy_content")
+
+            %a{name: 'transparency'}
+            %h3= t("home.how_to.transparency")
+            %p= t("home.how_to.transparency_content")
+
+      %a{name: 'terms-of-service'}
+      .col-xs-12.col-sm-12.col-md-9
+        %article.blog-post
+          .blogtitle
+            %h1== #{t("home.how_to.tos_short")} - #{t("home.how_to.tos")}
+          .blogcontent
+            %p= t("home.how_to.tos_content")
+            %p= t("home.how_to.tos_version")
+            %p= t("home.how_to.tos_accept")

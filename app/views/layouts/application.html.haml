@@ -1,0 +1,115 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    
+    %link{href: 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700', rel: 'stylesheet', type: 'text/css'}
+
+    %title= content_for?(:title) ? yield(:title) : t('leisure_deals')
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+
+    = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => false
+    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
+    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
+    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
+    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+
+
+  %body{class: ('sticky-header' if controller_name == 'deal_categories')}
+
+    %header.header
+      %nav.navbar.navbar-default{role: 'navigation', class: ('navbar-sticky' if controller_name == 'deal_categories')}
+        .container
+          .row
+            .col-md-12
+              .navbar-header
+                %a.navbar-brand{href: root_path}
+                  = fa_icon('ticket')
+                  %span= t("leisure_deals")
+
+              .navbar-collapse.collapse
+                %ul.nav.nav-pills.nav-main.pull-right
+                  %li.dropdown{class: ('active' if controller_name == 'deal_categories')}
+                    = link_to t("layouts.application.categories"), '#', class: 'dropdown-toggle', data: { 'toggle' => 'dropdown' }
+                    %ul.dropdown-menu
+                      %li= link_to t("layouts.application.travel"), deal_category_path('travel')
+                      %li= link_to t("layouts.application.wellness"), deal_category_path('wellness')
+                      %li= link_to t("layouts.application.activities"), deal_category_path('activities')
+                  
+                  %li.dropdown{class: ('active' if action_name == 'how_to')}
+                    = link_to t("layouts.application.how_it_works"), home_how_to_path, class: 'dropdown-toggle', data: { 'toggle' => 'dropdown' }
+                    %ul.dropdown-menu
+                      %li= link_to t("layouts.application.description"), home_how_to_path(anchor: 'how-it-works')
+                      %li= link_to t("home.how_to.partners"), home_how_to_path(anchor: 'partners')
+                      %li= link_to t("home.how_to.our_values"), home_how_to_path(anchor: 'our-values')
+                      %li= link_to t("home.how_to.tos_short"), home_how_to_path(anchor: 'terms-of-service')
+                  
+                  %li.dropdown{class: ('active' if action_name == 'about')}
+                    = link_to t("layouts.application.about"), home_about_path, class: 'dropdown-toggle', data: { 'toggle' => 'dropdown' }
+                    %ul.dropdown-menu
+                      %li= link_to t("layouts.application.about_us"), home_about_path(anchor: 'who-we-are')
+                      %li= link_to t("layouts.application.impressum"), home_about_path(anchor: 'impressum')
+                  
+                  %li= mail_to 'office@pickled-olives.com', t('layouts.application.contact')
+
+    %section.flash-errors
+      .container
+        .row
+          .col-lg-12
+            = bootstrap_flash
+    
+    = yield
+
+    %footer.footer
+      .container
+        .row
+          .col-md-4
+            .footeritem
+              %h4= t("layouts.application.deal_categories")
+              %ul.popular-posts
+                %li= link_to t("layouts.application.travel"), deal_category_path('travel')
+                %li= link_to t("layouts.application.wellness"), deal_category_path('wellness')
+                %li= link_to t("layouts.application.activities"), deal_category_path('activities')
+          .col-xs-12.col-sm-6.col-md-4
+            .footeritem
+              %h4= t("layouts.application.keep_updated")
+              %p= t("layouts.application.keep_updated_content")
+              %form#contactform{:action => "#", :method => "post", :name => "contactform"}
+                %fieldset
+                  %label{:accesskey => "E", :for => "email"}
+                  %input#email.email{:name => "email", :placeholder => t('layouts.application.email_placeholder'), :size => "30", :type => "text", :value => ""}/
+                  %button#submit.btn.btn-border.submit{:type => "submit", :value => "submit"}
+                    %i.fa.fa-rocket
+                    = t("layouts.application.send")
+              #message
+          .col-xs-12.col-sm-6.col-md-4
+            .footeritem
+              %h4= t("layouts.application.visit_us_on_facebook")
+              %p= t("layouts.application.keep_track_content")
+              %a.btn.btn-border{:href => "#"}= t("layouts.application.visit_facebook")
+    
+    %a.scrollToTop{:href => "#"}
+      %i.fa.fa-angle-up
+
+    %footer.footer
+      .container
+        .row
+          .col-lg-10
+            %p
+              &copy; Pickled Olives Software 2015. leisuredeals.net is Proud Beta Test Partner of
+              = link_to 'www.xapix.io', 'http://www.xapix.io'
+              !
+          .col-lg-1
+            %p= link_to t("home.how_to.tos_short"), home_how_to_path(anchor: 'terms-of-service')
+          .col-lg-1
+            %p= link_to t("home.about.impressum"), home_about_path(anchor: 'impressum')
+                
+
+    = javascript_include_tag 'application', "data-turbolinks-track" => false
+    = yield(:page_javascript) if content_for?(:page_javascript)
