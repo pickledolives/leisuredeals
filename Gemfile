@@ -5,7 +5,7 @@ gem 'rails', '4.2.0'
 gem 'puma'
 
 gem 'pg'
-gem 'xapix_client', '~> 1.0'
+gem 'xapix_client', git: 'https://github.com/xapix-io/xapix_client', branch: '1.0.0.rc1'
 
 gem 'newrelic_rpm'
 gem 'airbrake'
